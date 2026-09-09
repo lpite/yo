@@ -25,7 +25,7 @@ export default function Home() {
   useEffect(() => {
     const fetchSensors = async () => {
       try {
-        const res = await fetch("http://localhost:3000/sensors");
+        const res = await fetch("/sensors");
         if (!res.ok) throw new Error("Failed to fetch sensors");
         const data = await res.json();
         setSensors(data.sensors);
@@ -33,9 +33,7 @@ export default function Home() {
         const readingsMap: Record<number, SensorReading[]> = {};
         await Promise.all(
           data.sensors.map(async (sensor: Sensor) => {
-            const rRes = await fetch(
-              `http://localhost:3000/sensors/${sensor.id}/readings`
-            );
+            const rRes = await fetch(`/sensors/${sensor.id}/readings`);
             if (rRes.ok) {
               const rData = await rRes.json();
               readingsMap[sensor.id] = rData.readings || [];
