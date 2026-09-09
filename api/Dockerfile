@@ -1,4 +1,4 @@
-FROM clojure:tools-deps-1.11.1-alpine
+FROM clojure:temurin-21-tools-deps-alpine
 
 WORKDIR /app
 
