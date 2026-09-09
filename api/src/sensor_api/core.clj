@@ -61,5 +61,6 @@
 
 (defn -main
   [& _args]
-  (println "Starting sensor API on http://localhost:3000")
-  (run-jetty app {:port 3000 :join? false}))
+  (let [port (Integer/parseInt (or (System/getenv "PORT") "3000"))]
+    (println (str "Starting sensor API on http://localhost:" port))
+    (run-jetty app {:port port :join? false})))
