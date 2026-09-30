@@ -21,7 +21,7 @@ export default function Home() {
   );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  console.log(process.env.NEXT_PUBLIC_API_URL)
   useEffect(() => {
     const fetchSensors = async () => {
       try {
